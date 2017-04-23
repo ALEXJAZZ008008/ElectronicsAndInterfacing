@@ -1,0 +1,643 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice 4.1.2  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Alexander Whitehead">
+	<META NAME="CREATED" CONTENT="20160508;8454911">
+	<META NAME="CHANGEDBY" CONTENT="Alexander Whitehead">
+	<META NAME="CHANGED" CONTENT="20160508;15445086">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin: 2cm }
+		P { margin-bottom: 0.21cm }
+		TD P { margin-bottom: 0cm }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-GB" DIR="LTR">
+<P ALIGN=CENTER STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif"><FONT SIZE=5><B>System
+Report</B></FONT></FONT></P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>User
+Manual</B></FONT></FONT></P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE=3>This
+is the user manual for the central locking system designed by myself
+for the Electronics and interfacing coursework. It is designed to be
+run off of an Arduino.</FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><SPAN ID="Frame1" DIR="LTR" STYLE="float: left; width: 3cm; height: 5.33cm; border: none; padding: 0cm; background: #ffffff">
+	<P STYLE="margin-top: 0.21cm"><IMG SRC="System%20Report_html_70e95f84.jpg" NAME="graphics1" ALIGN=LEFT WIDTH=113 BORDER=0><BR CLEAR=LEFT><FONT SIZE=3><I>Illustration
+	I: This is and example of an Arduino that could be used to run the
+	program for the alarm. The green LED at the top of the image
+	indicates that the Arduino is powered on, the LED on the far right
+	of the 3 LEDs just above the input port is the LED used to indicate
+	when an input from the remote has been received.</I></FONT></P>
+</SPAN><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE=3>This
+central locking system will lock one item with one system of
+detection, it will sound a pulsed alarm when triggered.</FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><SPAN ID="Frame2" DIR="LTR" STYLE="float: left; width: 5cm; height: 8.88cm; border: none; padding: 0cm; background: #ffffff">
+	<P STYLE="margin-top: 0.21cm"><IMG SRC="System%20Report_html_a5d1b17.jpg" NAME="graphics2" ALIGN=LEFT WIDTH=189 BORDER=0><BR CLEAR=LEFT><FONT SIZE=3><I>Illustration
+	II: This is a breadboard of the components for a prototype of the
+	device. The black cylinder furthest from the camera is the buzzer
+	which pulses if the alarm is alarmed. The two LEDs are the status
+	indicator LEDs. The button furthest from the camera is the button to
+	arm the alarm and the button closest to the camera is the button to
+	trigger the alarm. The small silver cuboid closest to the camera is
+	the infrared sensor which takes the input from the infrared remote.</I></FONT></P>
+</SPAN><FONT FACE="Arial, sans-serif"><FONT SIZE=3>The alarm can be
+armed either via an infrared remote control or via a button located
+upon the device, when setting the alarm via the remote control the
+interact button must be pressed followed by the passcode in sequence.
+To disarm the alarm the interact button must be pressed on the remote
+followed by the passcode. When entering the passcode via the remote
+your inputs can be monitored both by a light which illuminates on the
+device after each input and by your input being output on the serial
+monitor.</FONT></FONT>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE=3>After
+arming the alarm a 20 second exit delay will be initiated which is
+indicated by a pulsed alarm.</FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><SPAN ID="Frame3" DIR="LTR" STYLE="float: left; width: 3cm; height: 5.33cm; border: none; padding: 0cm; background: #ffffff">
+	<P STYLE="margin-top: 0.21cm"><IMG SRC="System%20Report_html_m23d4971a.jpg" NAME="graphics3" ALIGN=LEFT WIDTH=113 BORDER=0><BR CLEAR=LEFT><FONT SIZE=3><I>Illustration
+	III: This is an example of an infrared remote. Here the power button
+	is used as the interact button and the numerical keypad is used to
+	enter the passcode</I></FONT></P>
+</SPAN><FONT FACE="Arial, sans-serif"><FONT SIZE=3>The passcode will
+be set when powering on the alarm, the passcode will be set via the
+serial monitor. The device can use up to 2 passcodes that will be
+stored even when the device is powered off. When powering on the
+device a prompt will appear asking if you would like to use the
+previously stored passcode you can respond with either 'Y' or 'N',
+entering 'Y' will use the previously stored passcode and entering 'N'
+will prompt you to enter a new passcode. To enter a new passcode you
+must type a 4 digit passcode and then press enter. After entering the
+first passcode a prompt will appear asking if you would like to use
+another passcode you can respond with either 'Y' or 'N', entering 'Y'
+will prompt the same sequence as above and entering 'N' will start
+the system running with only one passcode.</FONT></FONT>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE=3>The
+status of the device can be determined by the two LEDs upon the
+device. Red means the alarm is not armed, green means the alarm is
+armed and both LEDs illuminated means the alarm is alarmed. The
+status of the device can also be determined by an output to the
+serial monitor.</FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE=3>If
+at any time an input is invalid the device will indicate so via the
+serial monitor and allow you to reattempt an input.</FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><BR>
+</P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>System
+Overview</B></FONT></FONT></P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><SPAN ID="Frame4" DIR="LTR" STYLE="float: left; width: 17cm; height: 7.06cm; border: none; padding: 0cm; background: #ffffff">
+	<P STYLE="margin-top: 0.21cm"><IMG SRC="System%20Report_html_457af4c5.png" NAME="graphics4" ALIGN=LEFT WIDTH=643 BORDER=0><BR CLEAR=LEFT><FONT SIZE=3><I>Illustration
+	IV: This is a circuit diagram of the breadboard used to prototype
+	the alarm circuit. U1 is being used to represent the infrared
+	sensor, it takes +5v from the power rail and returns to the ground
+	power rail, pin 2 on U1 goes to pin 4 on the Arduino. The voltage
+	controlled switches S1 and S2 are being used to represent the
+	switches which control the state of the device, S1 is the trigger
+	for the alarm and S2 is the arming button for the alarm, both
+	switches take +5v from the power rail and return to ground power
+	rail, S1 pulls to pin 3 on the Arduino and S2 to pin 2. D1 and D2
+	are being used to represent the state indicator LEDs both have a
+	220ohm resistor between it and its pin and are connected to the
+	ground power rail, D1 goes to pin 12 on the Arduino and D2 to pin
+	13. The inductor L1 is being used to represent the siren that
+	indicates both the exit delay and that the alarm has been triggered,
+	it is connected to the ground power rail and pin 7 of the Arduino.</I></FONT></P>
+</SPAN><BR CLEAR=LEFT><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Inputs</B></FONT></FONT></P>
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=128*>
+	<COL WIDTH=128*>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Infrared
+			remote control</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>The
+			infrared remote control is used to both arm and disarm the alarm.
+			It does this by first sending a signal to prime the device to
+			receive a passcode and then sends a passcode at the discretion of
+			the user.</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Arm
+			button</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>The arm
+			button is used to arm the alarm directly in lieu of using the
+			infrared remote control. No passcode is required if the arm button
+			is used.</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Alarm
+			button</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>The
+			alarm button is used to simulate a detection method for the alarm.
+			When it is pressed the state of the alarm is changed to alarmed if
+			the alarm is currently armed.</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Serial
+			monitor</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>The
+			serial monitor is used to initialise the alarm. Both passcodes are
+			entered via the serial monitor.</FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Outputs</B></FONT></FONT></P>
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=128*>
+	<COL WIDTH=128*>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Siren</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>The
+			siren pulses to represent both the exit delay after the alarm is
+			initially armed and to illustrate that the alarm has been
+			triggered.</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Red LED</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>The red
+			LED is used to represent that the alarm is currently disarmed. The
+			red LED also comes on in conjunction with the green LED to
+			represent that the alarm has been triggered.</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Green
+			LED</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>The
+			green LED is used to represent that the alarm is currently armed.
+			The green LED also comes on in conjunction with the red LED to
+			represent that the alarm has been triggered. Because of the pin
+			used to interface with the green LED it will also flash to
+			represent when information is being sent through the serial port
+			to the Arduino.</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Arduino
+			LEDs</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>The LEDs
+			on the Arduino show when the Arduino is receiving input.</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Serial
+			monitor</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>The
+			serial monitor is not only used while setting up the alarm but
+			will also output relevant messages during the usage of the alarm
+			eg. It will show you infrared inputs that the Arduino is receiving
+			and will also show the alarms current state.</FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Software
+Description</B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Setup</B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Setup
+initialises all of the variables that are to be used in the program
+including querying the user as to the number of passcodes they wish
+to use. Setup also calls the method to add these passcodes.</FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>CodeSetup</B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Firstly
+this method checks to see if there is a passcode in EEPROM that can
+be read rather than creating a new one. If there is it gives the user
+the option of using this passcode. If the user chooses not to use
+this passcode or there is no passcode stored in EEPROM the method
+then asks the user to input a passcode digit by digit. If the
+passcode was not read from EEPROM the method then stores the new
+passcode in EEPROM.</FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>ISR</B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE=3>This
+method is called by the clock every half a second. If the alarm has
+been triggered or the alarm is being set this sounds the siren. If
+the alarm is off it turns it on if it is on it turns it off. A count
+variable is used to ensure that if the alarm is being set it only
+sounds for 20 seconds. A toned boolean also ensures that the siren
+cannot be left stuck on.</FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Loop</B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE=3>This
+is the main method of the program. Initially it checks to see if the
+interact button on the remote has been pressed, if it has it then
+checks to see if it is a valid time to perform actions on the alarm.
+Then it checks to see if the alarm has been triggered or has been
+armed, if not it checks the code entered if it is incorrect it
+informs the user if not it either arms or disarms the alarm.</FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>ArmKeyEvent</B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE=3>This
+is the interrupt method for the arm button. This simply calls the arm
+method.</FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>InitialiseArm</B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE=3>This
+method causes the exit delay to occur in the ISR method which will
+then in turn call the Arm method</FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Arm</B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE=3>The
+Arm method calls the lock method and then changes the state of the
+device to armed and switched the LEDs from red on to green on.</FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Lock</B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE=3>If
+the device is not locked changes a Boolean to represent something
+being locked.</FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Disarm</B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Exactly
+the same as Arm but in reverse.</FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Unlock</B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Exactly
+the same as Lock but in reverse.</FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>AlarmKeyEvent</B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE=3>This
+is the interrupt method for the alarm button. This simply calls the
+alarm method.</FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Alarmed</B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE=3>If
+the alarm is armed this indicated that the alarm should be sounded
+and turns both LEDs on.</FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>CheckCode</B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE=3>This
+method initialises two temporary variables one that will contain the
+temporary code and one that is an array of booleans equal to the
+number of codes. It then takes an input from the remote digit by
+digit and checks this digit against all of the codes if the number in
+the temporary code does not match the number in the passcode it makes
+its boolean false. If any of the booleans are still true after
+checking all places in the code then the temporary code and passcode
+are the same.</FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>RemoteInput</B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE=3>This
+method initially takes the input from the remote and then checks it
+against the universal preamble for the remote if this is correct it
+checks all of the known pulses and returns the number sent by the
+remote.</FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>ListenForIR</B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE=3>This
+method increments two variables by one for each time that the input
+from the infrared sensor is high or low and then adds this number to
+an array.</FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>PreambleCheck</B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE=3>This
+reads the preamble from progmem into a temporary buffer and then
+checks the input against it.</FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>ButtonCheck</B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal; font-weight: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>This does the same as
+PreambleCheck but checks each known button in turn returning the
+output when it is know.</FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal; font-weight: normal">
+<BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>IRComparePreamble</B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal; font-weight: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>This checks all the high
+and the low pulses for the first 18 pulses in turn against a known
+number with a margine for error of about 20%. If any of the checks
+fails this returns false.</FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal; font-weight: normal">
+<BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>IRCompare</B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal; font-weight: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>This does exactly the
+same as IRCompare but for the pulses after 18.</FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal; font-weight: normal">
+<BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Finite
+State Machine</B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal; font-weight: normal">
+<IMG SRC="System%20Report_html_5a956af4.png" NAME="graphics5" ALIGN=LEFT WIDTH=643 HEIGHT=482 BORDER=0><BR CLEAR=LEFT><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Testing</B></FONT></FONT></P>
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=128*>
+	<COL WIDTH=128*>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Entered
+			y as input</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Passed</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Entered
+			Y as input</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Passed</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Entered
+			N as input</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Passed</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Entered
+			w as input</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Invalid
+			input</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Entered
+			1234 as code</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>1234
+			code</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Entered
+			12345 as code</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>1234
+			code</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Entered
+			123 as code</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Code
+			rejected</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Used
+			stored code</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Stored
+			code 1234</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Entered
+			9876 as second code</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>9876
+			second code</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Used
+			stored second code</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>9876
+			second code</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Pressed
+			arm button</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Armed
+			and exit delay</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Pressed
+			arm button</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Already
+			armed</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Pressed
+			alarm button</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Pulsed
+			siren</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Pressed
+			alarm button</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>No
+			effect</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Pressed
+			arm button</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>No
+			effect</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Entered
+			1234 via remote</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Disarmed
+			and siren ceased</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Entered
+			1836 via remote</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Code
+			rejected</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Entered
+			10 via remote</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Code
+			rejected</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Pressed
+			arm button then Entered code</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Armed
+			and exit delay</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Entered
+			mute button</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Code
+			rejected</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Entered
+			1 and 2 simultaneously</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Code
+			rejected</FONT></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Pressed
+			alarm button</FONT></FONT></P>
+		</TD>
+		<TD WIDTH=50%>
+			<P ALIGN=LEFT><FONT FACE="Arial, sans-serif"><FONT SIZE=3>Alarm
+			not armed</FONT></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal; font-weight: normal">
+<BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><B>Conclusion</B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal; font-weight: normal">
+<FONT FACE="Arial, sans-serif"><FONT SIZE=3>In conclusion, it was
+quite different programming for an Arduino rather than a normal
+computer because of its limited memory and lack of multi-threading.
+To conserve memory I ended up putting my arrays from my header file
+into program memory which is something I haven't had to do before, it
+was interesting to learn about how this worked especially how to read
+things back from program memory using a buffer, also because of low
+memory I learnt about putting strings into program memory too using
+the F() command. Because of the lack of multi-threading I ended up
+using a lot of interrupts which some could argue is a bad thing. I
+read a lot about how the clock in the Arduino works and how to use
+this to schedule tasks, through this reading I also discovered that
+there are in fact 3 clocks that the Arduino uses. I would say that
+the faux multi-threading I implemented was effective at getting the
+job done, it did allow multiple processes to be run simultaneously.
+However, something I would do differently if I was to do it again
+would be to remove as many of the interrupts as I could because it is
+impossible to know what code the interrupts are interrupting and
+because of the way the infrared is read the interrupts could cause
+the wrong digits to be returned. This could cause a lot of issues if
+the program was built upon by someone else who didn't understand it
+as well as I did. Thus a better method would be to set flags with the
+interrupts that the main loop of the program would then check and act
+upon, therefore I would always know what code was doing what when.</FONT></FONT></P>
+</BODY>
+</HTML>
