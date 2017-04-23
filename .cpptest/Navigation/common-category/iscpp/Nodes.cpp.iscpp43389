@@ -1,6 +1,0 @@
-fileName=E:\AP\Navigation\Nodes.cpp
-isCpp=
-compilerOpts=-I"C:\Program Files (x86)\Parasoft\C++test for Visual Studio\9.5\engine\runtime\include" /ZI /W3 /Od /EHsc /RTC1 /MDd /fp:precise /Gd /GS /Oy- /Gm /DWIN32 /D_DEBUG /D_CONSOLE /D_LIB /D_UNICODE /DUNICODE /Zc:wchar_t /Zc:forScope /WX- /nologo -DPARASOFT_CPPTEST -I.
-compilerId=vc_12_0
-workingDir=E:\AP\Navigation\
-advancedOptionsHash=0
